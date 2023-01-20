@@ -2,16 +2,29 @@
   <!-- 헤더-->
   <div class="selection_container">
     <!-- 메인 3개 column -->
-    <Selection />
+    <Section />
   </div>
 </template>
 
 <script>
-import Selection from './components/Selection.vue'
+import Section from '@/components/Section.vue'
 export default {
-  computed: {
-    Selection,
+  components: {
+    Section,
   },
+  data: () => ({
+    defaultSection: [
+      {
+        name: 'TODO',
+      },
+      {
+        name: 'DOING',
+      },
+      {
+        name: 'Complated',
+      },
+    ],
+  }),
 }
 </script>
 

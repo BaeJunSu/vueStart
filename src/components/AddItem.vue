@@ -33,7 +33,7 @@
       placeholder="설명"
       class="workDetail"
     ></div>
-    <button :disabled="btnEnable" @mouseup="editMouseUpHandler()">취소</button>
+    <button :disabled="btnEnable" @mouseup="addMouseUpHandler()">취소</button>
     <button :disabled="btnEnable" @mouseup="applyMouseUpHandler()">작업 추가</button>
   </div>
 </template>

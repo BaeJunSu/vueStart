@@ -2,15 +2,23 @@
   <!-- 헤더-->
   <div class="selection_container">
     <!-- 메인 3개 column -->
-    <Section v-for="(selection, index) in SelectionList" :key="index" :name="selection.name" />
+    <Section
+      v-for="(selection, index) in SelectionList"
+      :key="index"
+      :name="selection.name"
+      @edit="startEdit"
+    />
+    <EditItem v-if="isEditMode" :editData="editData" @end="endEdit" />
   </div>
 </template>
 
 <script>
 import Section from '@/components/Section.vue'
+import EditItem from '@/components/EditItem.vue'
 export default {
   components: {
     Section,
+    EditItem,
   },
   data: () => ({
     defaultSection: [
@@ -24,6 +32,8 @@ export default {
         name: 'Complate',
       },
     ],
+    isEditMode: false,
+    editData: {},
   }),
   mounted() {
     const sesstionData = sessionStorage.getItem('todolist')
@@ -52,6 +62,15 @@ export default {
   computed: {
     SelectionList() {
       return this.defaultSection
+    },
+  },
+  methods: {
+    startEdit(item) {
+      this.editData = item
+      this.isEditMode = true
+    },
+    endEdit(item) {
+      this.isEditMode = false
     },
   },
 }

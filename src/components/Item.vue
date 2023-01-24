@@ -1,7 +1,7 @@
 <template>
   <div @mouseup="editMouseUpHandler()">
-    <div class="item">{{ description }}</div>
     <div class="item">{{ workName }}</div>
+    <div class="item">{{ description }}</div>
   </div>
 </template>
 

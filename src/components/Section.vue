@@ -38,6 +38,7 @@ export default {
   methods: {
     editHandler(item) {
       console.log('editHandler', item)
+      this.$emit('edit', item)
     },
   },
 }

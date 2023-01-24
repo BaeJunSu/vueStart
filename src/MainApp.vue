@@ -2,7 +2,7 @@
   <!-- 헤더-->
   <div class="selection_container">
     <!-- 메인 3개 column -->
-    <Section />
+    <Section v-for="(selection, index) in SelectionList" :key="index" :name="selection.name" />
   </div>
 </template>
 
@@ -15,16 +15,45 @@ export default {
   data: () => ({
     defaultSection: [
       {
-        name: 'TODO',
+        name: 'ToDo',
       },
       {
-        name: 'DOING',
+        name: 'Doing',
       },
       {
-        name: 'Complated',
+        name: 'Complate',
       },
     ],
   }),
+  mounted() {
+    const sesstionData = sessionStorage.getItem('todolist')
+    sessionStorage.setItem(
+      'todolist',
+      JSON.stringify([
+        {
+          workName: 'test1',
+          description: 'empty',
+          targetName: 'ToDo',
+        },
+      ]),
+    )
+    if (!!sesstionData) {
+      this.$store.dispatch('SET_TODOLIST', JSON.parse(sesstionData))
+    } else {
+      this.$store.dispatch('SET_TODOLIST', [
+        {
+          workName: 'test1',
+          description: 'empty',
+          targetName: 'ToDo',
+        },
+      ])
+    }
+  },
+  computed: {
+    SelectionList() {
+      return this.defaultSection
+    },
+  },
 }
 </script>
 
@@ -33,5 +62,8 @@ export default {
   display: flex;
   flex-direction: row;
   border: solid 1px gray;
+}
+body {
+  user-select: none;
 }
 </style>

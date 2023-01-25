@@ -20,21 +20,23 @@ export default {
     Section,
     EditItem,
   },
-  data: () => ({
-    defaultSection: [
-      {
-        name: 'ToDo',
-      },
-      {
-        name: 'Doing',
-      },
-      {
-        name: 'Complate',
-      },
-    ],
-    isEditMode: false,
-    editData: {},
-  }),
+  data: () => {
+    return {
+      defaultSection: [
+        {
+          name: 'ToDo',
+        },
+        {
+          name: 'Doing',
+        },
+        {
+          name: 'Complate',
+        },
+      ],
+      isEditMode: false,
+      editData: {},
+    }
+  },
   watch: {
     selectionList: function (newVal, oldVal) {
       this.defaultSection = newVal

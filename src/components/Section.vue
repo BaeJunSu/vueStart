@@ -22,9 +22,11 @@ export default {
     name: String,
   },
   components: { Item, AddItem },
-  data: () => ({
-    workList: [],
-  }),
+  data: () => {
+    return {
+      workList: [],
+    }
+  },
   mounted: () => {},
   computed: {
     childWork() {

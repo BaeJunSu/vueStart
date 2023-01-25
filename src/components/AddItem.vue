@@ -44,9 +44,11 @@ export default {
     target: String,
   },
   components: {},
-  data: () => ({
-    isEditMode: false,
-  }),
+  data: () => {
+    return {
+      isEditMode: false,
+    }
+  },
   computed: {
     btnEnable() {
       return this.isEditMode && this.$refs.workName?.innerText && this.$refs.workDetail?.innerText

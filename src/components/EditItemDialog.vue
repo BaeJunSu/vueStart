@@ -32,9 +32,11 @@ export default {
       description: String,
     },
   },
-  data: () => ({
-    target: null,
-  }),
+  data: () => {
+    return {
+      target: null,
+    }
+  },
   computed: {
     getName() {
       return this.editData?.workName ? this.editData?.workName : ''

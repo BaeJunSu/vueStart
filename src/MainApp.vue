@@ -36,28 +36,13 @@ export default {
     editData: {},
   }),
   mounted() {
-    const sesstionData = sessionStorage.getItem('todolist')
-    sessionStorage.setItem(
-      'todolist',
-      JSON.stringify([
-        {
-          workName: 'test1',
-          description: 'empty',
-          targetName: 'ToDo',
-        },
-      ]),
-    )
-    if (!!sesstionData) {
-      this.$store.dispatch('SET_TODOLIST', JSON.parse(sesstionData))
-    } else {
-      this.$store.dispatch('SET_TODOLIST', [
-        {
-          workName: 'test1',
-          description: 'empty',
-          targetName: 'ToDo',
-        },
-      ])
-    }
+    this.$store.dispatch('SET_TODOLIST', [
+      {
+        workName: 'test1',
+        description: 'empty',
+        targetName: 'ToDo',
+      },
+    ])
   },
   computed: {
     SelectionList() {

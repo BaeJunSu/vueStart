@@ -24,11 +24,8 @@ export default new Vuex.Store({
       console.log('SET_TODOLIST', state.todolist)
     },
     SET_TODOITEM: (state, payload) => {
-      const sesstionData = JSON.parse(sessionStorage.getItem('todolist'))
-      sesstionData.push(payload)
-      sessionStorage.setItem('todolist', JSON.stringify(sesstionData))
       state.todolist.push(payload)
-      console.log('SET_TODOITEM', sesstionData, state.todolist)
+      console.log('SET_TODOITEM', state.todolist)
     },
     MODIFY_TODOITEM: (state, payload) => {
       const idx = state.todolist.findIndex(
@@ -38,18 +35,9 @@ export default new Vuex.Store({
       )
       console.log('MODIFY_TODOITEM', idx)
       if (idx > -1) {
-        const sesstionData = JSON.parse(sessionStorage.getItem('todolist'))
-        const sIdx = sesstionData.findIndex(
-          (item) =>
-            item.workName === payload.preData.workName &&
-            item.targetName === payload.preData.targetName,
-        )
-        sesstionData.splice(sIdx, 1)
-        sesstionData.push(payload.newData)
         state.todolist.splice(idx, 1)
         state.todolist.push(payload.newData)
-        sessionStorage.setItem('todolist', JSON.stringify(sesstionData))
-        console.log('MODIFY_TODOITEM', sesstionData, state.todolist)
+        console.log('MODIFY_TODOITEM', state.todolist)
       }
     },
   },

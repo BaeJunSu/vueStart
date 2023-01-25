@@ -3,7 +3,7 @@
   <div class="selection_container">
     <!-- 메인 3개 column -->
     <Section
-      v-for="(selection, index) in SelectionList"
+      v-for="(selection, index) in selectionList"
       :key="index"
       :name="selection.name"
       @edit="startEdit"
@@ -14,7 +14,7 @@
 
 <script>
 import Section from '@/components/Section.vue'
-import EditItem from '@/components/EditItem.vue'
+import EditItem from '@/components/EditItemDialog.vue'
 export default {
   components: {
     Section,
@@ -35,6 +35,11 @@ export default {
     isEditMode: false,
     editData: {},
   }),
+  watch: {
+    selectionList: function (newVal, oldVal) {
+      this.defaultSection = newVal
+    },
+  },
   mounted() {
     this.$store.dispatch('SET_TODOLIST', [
       {
@@ -43,10 +48,11 @@ export default {
         targetName: 'ToDo',
       },
     ])
+    this.$store.state.targetList = this.defaultSection
   },
   computed: {
-    SelectionList() {
-      return this.defaultSection
+    selectionList() {
+      return this.$store.getters.getTargets
     },
   },
   methods: {

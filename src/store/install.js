@@ -6,6 +6,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     todolist: [],
+    targetList: [],
   },
   actions: {
     SET_TODOLIST: ({ commit }, payload) => {
@@ -44,6 +45,9 @@ export default new Vuex.Store({
   getters: {
     getItems: (state) => {
       return state.todolist
+    },
+    getTargets: (state) => {
+      return state.targetList
     },
   },
 })
